@@ -16,7 +16,23 @@ const adminRoutes        = require('./routes/admin');
 const app = express();
 
 app.use(cors({
-  origin: ['http://127.0.0.1:8080', 'http://localhost:8080', process.env.FRONTEND_URL].filter(Boolean),
+  origin: (origin, callback) => {
+    const allowed = [
+      'http://127.0.0.1:8080',
+      'http://localhost:8080',
+      'https://13x-frontend.vercel.app',
+      process.env.FRONTEND_URL,
+    ].filter(Boolean);
+
+    // Allow Vercel preview deploys (e.g. 13x-frontend-git-branch-xxx.vercel.app)
+    const isVercelPreview = origin && /\.vercel\.app$/.test(origin);
+
+    if (!origin || allowed.includes(origin) || isVercelPreview) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true,
 }));
 
