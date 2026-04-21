@@ -325,4 +325,60 @@ router.get('/companies/:id/signals', authenticate, requireSubscription, async (r
   } catch (err) { next(err); }
 });
 
+// ══════════════════════════════════════════════════════════════
+// COMPANY BY TICKER
+// ══════════════════════════════════════════════════════════════
+
+const cleanTicker = t => t.toUpperCase().replace(/[^A-Z0-9\-]/g,'').slice(0,20);
+
+router.get('/companies/by-ticker/:ticker', authenticate, requireSubscription, async (req, res, next) => {
+  const ticker = cleanTicker(req.params.ticker);
+  try {
+    const { data, error } = await supabase.from('companies')
+      .select('id,name,ticker,industry,top_trigger,catalyst_tags,score,stage,market_cap')
+      .ilike('ticker', ticker).maybeSingle();
+    if (error || !data) return next(new AppError('Company not found', 404));
+    res.json({ data });
+  } catch (err) { next(err); }
+});
+
+router.get('/companies/by-ticker/:ticker/triggers', authenticate, requireSubscription, async (req, res, next) => {
+  const ticker = cleanTicker(req.params.ticker);
+  try {
+    const { data: co } = await supabase.from('companies').select('id').ilike('ticker', ticker).maybeSingle();
+    if (!co) return res.json({ data: [] });
+    const { data, error } = await supabase.from('triggers')
+      .select('id,quarter,trigger_text,catalyst_type,conviction_score,source_quote')
+      .eq('company_id', co.id).order('conviction_score', { ascending: false });
+    if (error) return next(new AppError('Could not fetch triggers', 500));
+    res.json({ data });
+  } catch (err) { next(err); }
+});
+
+router.get('/companies/by-ticker/:ticker/signals', authenticate, requireSubscription, async (req, res, next) => {
+  const ticker = cleanTicker(req.params.ticker);
+  try {
+    const { data: co } = await supabase.from('companies').select('id').ilike('ticker', ticker).maybeSingle();
+    if (!co) return res.json({ data: [] });
+    const { data, error } = await supabase.from('signals')
+      .select('id,quarter,signal_type,content,confidence,source')
+      .eq('company_id', co.id).order('confidence', { ascending: false });
+    if (error) return next(new AppError('Could not fetch signals', 500));
+    res.json({ data });
+  } catch (err) { next(err); }
+});
+
+router.get('/companies/by-ticker/:ticker/snapshot', authenticate, requireSubscription, async (req, res, next) => {
+  const ticker = cleanTicker(req.params.ticker);
+  try {
+    const { data: co } = await supabase.from('companies').select('id').ilike('ticker', ticker).maybeSingle();
+    if (!co) return res.json({ data: null });
+    const { data, error } = await supabase.from('concall_snapshots')
+      .select('id,quarter,revenue_trend,margin_trend,tone,guidance_summary,capex_commentary,risks,key_quotes')
+      .eq('company_id', co.id).order('created_at', { ascending: false }).limit(1).maybeSingle();
+    if (error) return next(new AppError('Could not fetch snapshot', 500));
+    res.json({ data });
+  } catch (err) { next(err); }
+});
+
 module.exports = router;
