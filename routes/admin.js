@@ -82,4 +82,29 @@ router.post('/deactivate', authenticate, requireAdmin, async (req, res, next) =>
   } catch (err) { next(err); }
 });
 
+// ── POST /api/v1/admin/run-pipeline ─────────────────────────
+// Manually trigger the data pipeline from admin panel
+const { runPipeline } = require('../pipeline/runner');
+
+router.post('/run-pipeline', authenticate, requireAdmin, async (req, res, next) => {
+  try {
+    // Respond immediately — pipeline runs in background
+    res.json({ success: true, message: 'Pipeline started. Check Render logs for progress.' });
+    runPipeline().catch(err => console.error('Pipeline error:', err));
+  } catch (err) { next(err); }
+});
+
+// ── GET /api/v1/admin/pipeline-status ───────────────────────
+// Check how many companies have been loaded for current quarter
+router.get('/pipeline-status', authenticate, requireAdmin, async (req, res, next) => {
+  try {
+    const quarter = process.env.CURRENT_QUARTER || 'Q4FY26';
+    const { count } = await supabase
+      .from('companies')
+      .select('*', { count: 'exact', head: true })
+      .eq('quarter', quarter);
+    res.json({ quarter, companiesLoaded: count || 0 });
+  } catch (err) { next(err); }
+});
+
 module.exports = router;
