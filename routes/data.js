@@ -19,19 +19,34 @@ router.get('/companies', authenticate, requireSubscription, async (req, res, nex
     if (limit < 1 || limit > 100) limit = 50;
     const offset = (page - 1) * limit;
 
-    const industry = typeof req.query.industry === 'string' ? req.query.industry : null;
-    const catalyst = VALID_CATALYSTS.includes(req.query.catalyst) ? req.query.catalyst : null;
-    const search   = (req.query.search || '').replace(/[^a-zA-Z0-9\s\-.&]/g, '').trim().slice(0, 100);
+    const industry  = typeof req.query.industry === 'string' ? req.query.industry : null;
+    const search    = (req.query.search || '').replace(/[^a-zA-Z0-9\s\-.&]/g, '').trim().slice(0, 100);
+    const stage     = ['early_growth','acceleration','maturity','decline'].includes(req.query.stage) ? req.query.stage : null;
+    const marketCap = ['small','mid','large'].includes(req.query.market_cap) ? req.query.market_cap : null;
+    const scoreMin  = parseInt(req.query.score_min, 10) || 0;
+    const scoreMax  = parseInt(req.query.score_max, 10) || 5;
+
+    // Multi-catalyst: ?catalysts=capex,margin or single ?catalyst=capex
+    let catalysts = [];
+    if (req.query.catalysts) {
+      catalysts = req.query.catalysts.split(',').filter(c => VALID_CATALYSTS.includes(c));
+    } else if (VALID_CATALYSTS.includes(req.query.catalyst)) {
+      catalysts = [req.query.catalyst];
+    }
 
     let query = supabase
       .from('companies')
       .select('id, name, industry, top_trigger, catalyst_tags, score, stage, market_cap', { count: 'exact' })
+      .gte('score', scoreMin)
+      .lte('score', scoreMax)
       .order('score', { ascending: false })
       .range(offset, offset + limit - 1);
 
-    if (industry) query = query.eq('industry', industry);
-    if (catalyst) query = query.contains('catalyst_tags', [catalyst]);
-    if (search)   query = query.ilike('name', `%${search}%`);
+    if (industry)  query = query.eq('industry', industry);
+    if (stage)     query = query.eq('stage', stage);
+    if (marketCap) query = query.eq('market_cap', marketCap);
+    if (search)    query = query.ilike('name', `%${search}%`);
+    if (catalysts.length) query = query.contains('catalyst_tags', catalysts);
 
     const { data, error, count } = await query;
     if (error) return next(new AppError('Could not fetch companies', 500));
@@ -245,6 +260,68 @@ router.post('/referral/reward', async (req, res, next) => {
     await supabase.rpc('increment_referral_rewards', { ref_id: use.referral_id });
 
     res.json({ rewarded: true, referrerId, newExpiry: base.toISOString() });
+  } catch (err) { next(err); }
+});
+
+// ══════════════════════════════════════════════════════════════
+// WATCHLIST
+// ══════════════════════════════════════════════════════════════
+
+// GET /api/v1/data/watchlist
+router.get('/watchlist', authenticate, requireSubscription, async (req, res, next) => {
+  try {
+    const { data, error } = await supabase
+      .from('watchlists')
+      .select('company_id, created_at, companies(id, name, industry, top_trigger, catalyst_tags, score, stage, market_cap)')
+      .eq('user_id', req.user.id)
+      .order('created_at', { ascending: false });
+    if (error) return next(new AppError('Could not fetch watchlist', 500));
+    res.json({ data: (data || []).map(w => ({ ...w.companies, watchlisted_at: w.created_at })) });
+  } catch (err) { next(err); }
+});
+
+// POST /api/v1/data/watchlist/:companyId
+router.post('/watchlist/:companyId', authenticate, requireSubscription, async (req, res, next) => {
+  const UUID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+  if (!UUID_REGEX.test(req.params.companyId)) return next(new AppError('Invalid company ID', 400));
+  try {
+    const { error } = await supabase.from('watchlists').insert({
+      user_id: req.user.id, company_id: req.params.companyId,
+    });
+    if (error && error.code === '23505') return res.json({ success: true, message: 'Already in watchlist' });
+    if (error) return next(new AppError('Could not add to watchlist', 500));
+    res.json({ success: true });
+  } catch (err) { next(err); }
+});
+
+// DELETE /api/v1/data/watchlist/:companyId
+router.delete('/watchlist/:companyId', authenticate, requireSubscription, async (req, res, next) => {
+  const UUID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+  if (!UUID_REGEX.test(req.params.companyId)) return next(new AppError('Invalid company ID', 400));
+  try {
+    const { error } = await supabase.from('watchlists')
+      .delete().eq('user_id', req.user.id).eq('company_id', req.params.companyId);
+    if (error) return next(new AppError('Could not remove from watchlist', 500));
+    res.json({ success: true });
+  } catch (err) { next(err); }
+});
+
+// ══════════════════════════════════════════════════════════════
+// MANAGEMENT SIGNALS
+// ══════════════════════════════════════════════════════════════
+
+// GET /api/v1/data/companies/:id/signals
+router.get('/companies/:id/signals', authenticate, requireSubscription, async (req, res, next) => {
+  const UUID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+  if (!UUID_REGEX.test(req.params.id)) return next(new AppError('Invalid company ID', 400));
+  try {
+    const { data, error } = await supabase
+      .from('signals')
+      .select('id, quarter, signal_type, content, confidence, source')
+      .eq('company_id', req.params.id)
+      .order('confidence', { ascending: false });
+    if (error) return next(new AppError('Could not fetch signals', 500));
+    res.json({ data });
   } catch (err) { next(err); }
 });
 
