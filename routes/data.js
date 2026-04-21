@@ -36,7 +36,7 @@ router.get('/companies', authenticate, requireSubscription, async (req, res, nex
 
     let query = supabase
       .from('companies')
-      .select('id, name, industry, top_trigger, catalyst_tags, score, stage, market_cap', { count: 'exact' })
+      .select('id, name, ticker, industry, top_trigger, catalyst_tags, score, stage, market_cap', { count: 'exact' })
       .gte('score', scoreMin)
       .lte('score', scoreMax)
       .order('score', { ascending: false })
@@ -90,7 +90,7 @@ router.get('/screener/preview', async (req, res, next) => {
   try {
     const { data, error } = await supabase
       .from('companies')
-      .select('name, industry, top_trigger, catalyst_tags, score')
+      .select('name, ticker, industry, top_trigger, catalyst_tags, score')
       .eq('is_sample', true)
       .order('score', { ascending: false })
       .limit(15);
@@ -272,7 +272,7 @@ router.get('/watchlist', authenticate, requireSubscription, async (req, res, nex
   try {
     const { data, error } = await supabase
       .from('watchlists')
-      .select('company_id, created_at, companies(id, name, industry, top_trigger, catalyst_tags, score, stage, market_cap)')
+      .select('company_id, created_at, companies(id, name, ticker, industry, top_trigger, catalyst_tags, score, stage, market_cap)')
       .eq('user_id', req.user.id)
       .order('created_at', { ascending: false });
     if (error) return next(new AppError('Could not fetch watchlist', 500));
