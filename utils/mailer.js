@@ -37,7 +37,7 @@ async function sendWelcomeEmail(email, name) {
       <h2 style="color:#0F172A;letter-spacing:-0.5px">Welcome, ${name} 👋</h2>
       <p style="color:#475569">You're in. Here's what 13X gives you:</p>
       <ul style="color:#334155;line-height:2;padding-left:20px">
-        <li>Growth triggers for <strong>2000+ Indian companies</strong></li>
+        <li>Growth triggers for <strong>350+ Indian companies</strong></li>
         <li>10–12 forward-looking signals per company from 4 quarters of earnings calls</li>
         <li>Filter by capex, margin expansion, geo expansion, acquisitions and more</li>
         <li>Quarterly data updates every earnings season, automatically</li>
@@ -82,7 +82,7 @@ async function sendExpiryReminderEmail(email, name, expiresAt) {
     html: `<div style="${BASE_STYLE}">
       <h2 style="color:#0F172A;letter-spacing:-0.5px">Don't lose access, ${name}</h2>
       <p style="color:#475569">Your 13X Pro subscription expires on <strong>${expiry}</strong>.</p>
-      <p style="color:#475569">After that, you'll lose access to the full screener and all 2000+ company triggers.</p>
+      <p style="color:#475569">After that, you'll lose access to the full screener and all 350+ company triggers.</p>
       ${BTN(`${process.env.FRONTEND_URL}?page=pricing`, 'Renew Now')}
       <p style="margin-top:16px;color:#94A3B8;font-size:13px">You can renew anytime from your dashboard or the pricing page.</p>
       ${FOOTER}
