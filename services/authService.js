@@ -104,10 +104,14 @@ async function login({ email, password }) {
   const accessToken  = signAccessToken(user);
   const refreshToken = await createRefreshToken(user.id);
 
+  const subData = await getMe(user.id);
+
   return {
     accessToken,
     refreshToken,
     user: { id: user.id, email: user.email, name: user.name },
+    subscription: subData.subscription,
+    isPaid: subData.isPaid
   };
 }
 

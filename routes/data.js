@@ -381,4 +381,125 @@ router.get('/companies/by-ticker/:ticker/snapshot', authenticate, requireSubscri
   } catch (err) { next(err); }
 });
 
+// ── ANNUAL REPORT BY TICKER (mock generator) ────────────────
+function getSeededValue(str, seed) {
+  let hash = seed || 0;
+  for (let i = 0; i < str.length; i++) {
+    hash = (hash << 5) - hash + str.charCodeAt(i);
+    hash |= 0;
+  }
+  return Math.abs(hash);
+}
+
+function generateMockAnnualReport(co) {
+  const ticker = co.ticker || 'COMP';
+  const name = co.name || 'Company';
+  const ind = co.industry || 'IT Services';
+  
+  const seed1 = getSeededValue(ticker, 1);
+  const seed2 = getSeededValue(ticker, 2);
+  const seed3 = getSeededValue(ticker, 3);
+  const seed4 = getSeededValue(ticker, 4);
+
+  const revBase = (seed1 % 450) + 10;
+  const revenue = revBase * 100;
+  const revGrowthVal = (seed2 % 28) - 4;
+  const revGrowth = (revGrowthVal >= 0 ? '+' : '') + revGrowthVal + '% YoY';
+  const ebitdaMarginVal = (seed3 % 20) + 10;
+  const ebitdaMargin = ebitdaMarginVal + '%';
+  const pat = Math.round(revenue * (ebitdaMarginVal / 100) * 0.62);
+  const debtEquity = ((seed4 % 90) / 100).toFixed(2);
+
+  let highlights = [];
+  let outlook = "";
+  let risks = [];
+
+  if (ind.toLowerCase().includes('defence') || ind.toLowerCase().includes('aerospace')) {
+    highlights = [
+      `Secured major serial production orders for next-generation defense systems, extending order book visibility to 4.2x FY25 revenues.`,
+      `Successfully commercialized the Bangalore advanced electro-optics facility, scaling domestic production capacity by 60%.`,
+      `Increased R&D allocation to 8.5% of total revenues to accelerate self-reliance and indigenization under the Atmanirbhar Bharat initiative.`
+    ];
+    outlook = `Management expects strong double-digit growth to persist in FY26-27, driven by domestic procurement mandates and entry into export markets in Southeast Asia and the Middle East. Operating margins are expected to stabilize around ${ebitdaMarginVal + 1}% due to improved product mix and operating leverage.`;
+    risks = [
+      `Elongated milestone clearance cycles leading to temporary working capital pressure.`,
+      `Import dependencies for high-grade sensors and raw specialty composites.`
+    ];
+  } else if (ind.toLowerCase().includes('pharma') || ind.toLowerCase().includes('healthcare')) {
+    highlights = [
+      `Cleared three critical US FDA facility inspections with zero Form 483 observations, paving the way for 12 new product launches.`,
+      `Expanded the high-margin CDMO pipeline, adding 4 global innovator pharmaceutical clients in oncology and immunology segments.`,
+      `Invested ₹450 Cr in digitalizing production lines to ensure compliance with global regulatory data integrity standards.`
+    ];
+    outlook = `The outlook remains positive with a strong focus on scaling complex generic filings and advancing CDMO partnerships. Management aims for an EBITDA margin floor of ${ebitdaMarginVal}% by shifting revenue mix toward value-added formulations and niche API segments.`;
+    risks = [
+      `Price control policies in domestic and European markets limiting pricing power.`,
+      `Intense competition and price erosion in the US base generics portfolio.`
+    ];
+  } else if (ind.toLowerCase().includes('energy') || ind.toLowerCase().includes('power') || ind.toLowerCase().includes('renewable')) {
+    highlights = [
+      `Successfully commissioned 1.2 GW of hybrid solar-wind capacity, expanding the active operational portfolio to 4.8 GW.`,
+      `Secured long-term Power Purchase Agreements (PPAs) with state discoms at tariff floors ensuring stable return profiles.`,
+      `Reduced average cost of debt by 45 basis points through refinance programs and ESG-linked green bond issuances.`
+    ];
+    outlook = `The long-term vision centers on reaching a 10 GW operational milestone by FY28. Debt levels are expected to remain stable, with internal cash generation increasingly funding capital expenditure for new evacuation infrastructure.`;
+    risks = [
+      `Grid connectivity bottlenecks and land acquisition delays in western states.`,
+      `Fluctuations in global photovoltaic cell and module import duty structures.`
+    ];
+  } else if (ind.toLowerCase().includes('finance') || ind.toLowerCase().includes('bank') || ind.toLowerCase().includes('lending')) {
+    highlights = [
+      `Achieved robust loan book expansion of ${revGrowthVal + 5}% YoY, driven by retail credit, vehicle finance, and micro-LAP.`,
+      `Maintained asset quality excellence with Gross NPA declining to 1.84% and Net NPA falling to a historic low of 0.42%.`,
+      `Digitized retail loan sourcing, with over 68% of fresh personal loans processed end-to-end via the mobile app.`
+    ];
+    outlook = `The strategy is geared towards conservative loan book expansion while maintaining strict credit underwriting standards. Management targets a return on assets (RoA) of 1.8% to 2.1% through asset repricing and optimal deposit mix.`;
+    risks = [
+      `Increased cost of funds due to deposit mobilization challenges.`,
+      `Potential credit risk spikes in unsecured personal lending segments.`
+    ];
+  } else {
+    highlights = [
+      `Expanded direct distribution reach to 12,000 retail touchpoints, strengthening presence in Tier-2 and Tier-3 markets.`,
+      `Commissioned the first phase of the greenfield capacity expansion, adding 20% to total annual production volume.`,
+      `Implemented comprehensive cost-control measures across supply chain routes, yielding 80 bps of operational cost savings.`
+    ];
+    outlook = `Management targets stable volume growth of 8-10% in FY26, with revenue growth further aided by product premiumization efforts. Operating margins are guided to remain in the range of ${ebitdaMarginVal - 1}% to ${ebitdaMarginVal + 1}% depending on raw material price trends.`;
+    risks = [
+      `Volatility in raw material inputs and packaging materials pricing.`,
+      `Fierce competitive discounting from organized regional players.`
+    ];
+  }
+
+  return {
+    company_name: name,
+    ticker: ticker,
+    industry: ind,
+    fiscal_year: 'FY25',
+    metrics: {
+      revenue: `₹${revenue.toLocaleString('en-IN')} Cr`,
+      revenue_growth: revGrowth,
+      ebitda_margin: ebitdaMargin,
+      pat: `₹${pat.toLocaleString('en-IN')} Cr`,
+      debt_equity: debtEquity
+    },
+    highlights,
+    outlook,
+    risks
+  };
+}
+
+router.get('/companies/by-ticker/:ticker/annual-report', authenticate, requireSubscription, async (req, res, next) => {
+  const ticker = cleanTicker(req.params.ticker);
+  try {
+    const { data: co, error } = await supabase.from('companies')
+      .select('id,name,ticker,industry,top_trigger,catalyst_tags,score,stage,market_cap')
+      .ilike('ticker', ticker).maybeSingle();
+    if (error || !co) return next(new AppError('Company not found', 404));
+    
+    const mockReport = generateMockAnnualReport(co);
+    res.json({ data: mockReport });
+  } catch (err) { next(err); }
+});
+
 module.exports = router;

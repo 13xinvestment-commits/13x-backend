@@ -1,0 +1,6 @@
+.env
+node_modules/
+test_connection.js
+test_api.js
+test.pdf
+*.log
