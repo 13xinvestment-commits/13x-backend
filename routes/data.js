@@ -1,31 +1,44 @@
+
 // routes/data.js
 const express  = require('express');
 const crypto   = require('crypto');
+const fs       = require('fs');
+const path     = require('path');
 const supabase = require('../config/supabase');
 const { authenticate, requireSubscription } = require('../middleware/auth');
 const { apiLimiter } = require('../middleware/rateLimiter');
 const { AppError } = require('../middleware/errorHandler');
-
+ 
+let companyMetrics = {};
+try {
+  const metricsPath = path.join(__dirname, '../company_metrics.json');
+  if (fs.existsSync(metricsPath)) {
+    companyMetrics = JSON.parse(fs.readFileSync(metricsPath, 'utf8'));
+  }
+} catch (err) {
+  console.error('Failed to load company_metrics.json:', err);
+}
+ 
 const router = express.Router();
 router.use(apiLimiter);
-
+ 
 const VALID_CATALYSTS = ['capex', 'margin', 'geo', 'new-prod', 'acq'];
-
+ 
 // ── GET /api/v1/data/companies  (paid) ───────────────────────
 router.get('/companies', authenticate, requireSubscription, async (req, res, next) => {
   try {
     let page  = Math.max(1, parseInt(req.query.page, 10)  || 1);
     let limit = parseInt(req.query.limit, 10) || 50;
-    if (limit < 1 || limit > 100) limit = 50;
+    if (limit < 1 || limit > 500) limit = 50;
     const offset = (page - 1) * limit;
-
+ 
     const industry  = typeof req.query.industry === 'string' ? req.query.industry : null;
     const search    = (req.query.search || '').replace(/[^a-zA-Z0-9\s\-.&]/g, '').trim().slice(0, 100);
     const stage     = ['early_growth','acceleration','maturity','decline'].includes(req.query.stage) ? req.query.stage : null;
     const marketCap = ['small','mid','large'].includes(req.query.market_cap) ? req.query.market_cap : null;
     const scoreMin  = parseInt(req.query.score_min, 10) || 0;
     const scoreMax  = parseInt(req.query.score_max, 10) || 5;
-
+ 
     // Multi-catalyst: ?catalysts=capex,margin or single ?catalyst=capex
     let catalysts = [];
     if (req.query.catalysts) {
@@ -33,7 +46,7 @@ router.get('/companies', authenticate, requireSubscription, async (req, res, nex
     } else if (VALID_CATALYSTS.includes(req.query.catalyst)) {
       catalysts = [req.query.catalyst];
     }
-
+ 
     let query = supabase
       .from('companies')
       .select('id, name, ticker, industry, top_trigger, catalyst_tags, score, stage, market_cap', { count: 'exact' })
@@ -41,37 +54,37 @@ router.get('/companies', authenticate, requireSubscription, async (req, res, nex
       .lte('score', scoreMax)
       .order('score', { ascending: false })
       .range(offset, offset + limit - 1);
-
+ 
     if (industry)  query = query.eq('industry', industry);
     if (stage)     query = query.eq('stage', stage);
     if (marketCap) query = query.eq('market_cap', marketCap);
     if (search)    query = query.ilike('name', `%${search}%`);
     if (catalysts.length) query = query.contains('catalyst_tags', catalysts);
-
+ 
     const { data, error, count } = await query;
     if (error) return next(new AppError('Could not fetch companies', 500));
-
+ 
     res.json({ data, total: count, page, limit, pages: Math.ceil(count / limit) });
   } catch (err) { next(err); }
 });
-
+ 
 // ── GET /api/v1/data/companies/:id/triggers  (paid) ──────────
 router.get('/companies/:id/triggers', authenticate, requireSubscription, async (req, res, next) => {
   const UUID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
   if (!UUID_REGEX.test(req.params.id)) return next(new AppError('Invalid company ID', 400));
-
+ 
   try {
     const { data, error } = await supabase
       .from('triggers')
       .select('id, quarter, trigger_text, catalyst_type, conviction_score, source_quote')
       .eq('company_id', req.params.id)
       .order('conviction_score', { ascending: false });
-
+ 
     if (error) return next(new AppError('Could not fetch triggers', 500));
     res.json({ data });
   } catch (err) { next(err); }
 });
-
+ 
 // ── GET /api/v1/data/industries  (public) ────────────────────
 router.get('/industries', async (req, res, next) => {
   try {
@@ -79,12 +92,12 @@ router.get('/industries', async (req, res, next) => {
       .from('industries')
       .select('id, name, category, company_count, summary_tag, catalysts')
       .order('company_count', { ascending: false });
-
+ 
     if (error) return next(new AppError('Could not fetch industries', 500));
     res.json({ data });
   } catch (err) { next(err); }
 });
-
+ 
 // ── GET /api/v1/data/screener/preview  (public) ──────────────
 router.get('/screener/preview', async (req, res, next) => {
   try {
@@ -94,32 +107,32 @@ router.get('/screener/preview', async (req, res, next) => {
       .eq('is_sample', true)
       .order('score', { ascending: false })
       .limit(15);
-
+ 
     if (error) return next(new AppError('Could not fetch preview data', 500));
     res.json({ data });
   } catch (err) { next(err); }
 });
-
+ 
 // ══════════════════════════════════════════════════════════════
 // TRIAL — 2-day free trial
 // ══════════════════════════════════════════════════════════════
-
+ 
 // POST /api/v1/data/trial/start
 router.post('/trial/start', authenticate, async (req, res, next) => {
   try {
     const userId = req.user.id;
-
+ 
     // Check if already had trial or paid sub
     const { data: existing } = await supabase
       .from('subscriptions')
       .select('status, plan')
       .eq('user_id', userId)
       .maybeSingle();
-
+ 
     if (existing) return next(new AppError('Trial or subscription already used', 400));
-
+ 
     const expiresAt = new Date(Date.now() + 2 * 24 * 60 * 60 * 1000); // 2 days
-
+ 
     const { error } = await supabase.from('subscriptions').insert({
       user_id: userId,
       plan: 'trial',
@@ -127,35 +140,35 @@ router.post('/trial/start', authenticate, async (req, res, next) => {
       expires_at: expiresAt.toISOString(),
       updated_at: new Date().toISOString(),
     });
-
+ 
     if (error) return next(new AppError('Could not start trial', 500));
-
+ 
     res.json({ success: true, expiresAt, message: '2-day trial started!' });
   } catch (err) { next(err); }
 });
-
+ 
 // ══════════════════════════════════════════════════════════════
 // REFERRALS
 // ══════════════════════════════════════════════════════════════
-
+ 
 // GET /api/v1/data/referral/code  — get or create my referral code
 router.get('/referral/code', authenticate, async (req, res, next) => {
   try {
     const userId = req.user.id;
-
+ 
     // Return existing code if any
     const { data: existing } = await supabase
       .from('referrals')
       .select('code, uses, rewards_granted')
       .eq('referrer_id', userId)
       .maybeSingle();
-
+ 
     if (existing) return res.json({ code: existing.code, uses: existing.uses, rewards: existing.rewards_granted });
-
+ 
     // Generate new code
     const code = req.user.name.split(' ')[0].toLowerCase().replace(/[^a-z]/g, '') +
       crypto.randomBytes(3).toString('hex');
-
+ 
     const { error } = await supabase.from('referrals').insert({
       referrer_id: userId,
       code,
@@ -163,40 +176,40 @@ router.get('/referral/code', authenticate, async (req, res, next) => {
       rewards_granted: 0,
       created_at: new Date().toISOString(),
     });
-
+ 
     if (error) return next(new AppError('Could not create referral code', 500));
     res.json({ code, uses: 0, rewards: 0 });
   } catch (err) { next(err); }
 });
-
+ 
 // POST /api/v1/data/referral/apply  — apply referral code at signup
 // Called right after account creation (before payment)
 router.post('/referral/apply', authenticate, async (req, res, next) => {
   try {
     const { code } = req.body;
     if (!code) return next(new AppError('Code required', 400));
-
+ 
     const userId = req.user.id;
-
+ 
     // Find referral record
     const { data: ref } = await supabase
       .from('referrals')
       .select('id, referrer_id, code')
       .eq('code', code.toLowerCase().trim())
       .maybeSingle();
-
+ 
     if (!ref) return next(new AppError('Invalid referral code', 404));
     if (ref.referrer_id === userId) return next(new AppError('Cannot use your own referral code', 400));
-
+ 
     // Check if this user already applied a code
     const { data: alreadyUsed } = await supabase
       .from('referral_uses')
       .select('id')
       .eq('referred_id', userId)
       .maybeSingle();
-
+ 
     if (alreadyUsed) return next(new AppError('You have already used a referral code', 400));
-
+ 
     // Record the use
     await supabase.from('referral_uses').insert({
       referral_id: ref.id,
@@ -204,24 +217,24 @@ router.post('/referral/apply', authenticate, async (req, res, next) => {
       used_at: new Date().toISOString(),
       rewarded: false,
     });
-
+ 
     // Increment use count
     await supabase.rpc('increment_referral_uses', { ref_id: ref.id });
-
+ 
     res.json({ success: true, message: 'Referral code applied! Your friend will get 30 days free when you subscribe.' });
   } catch (err) { next(err); }
 });
-
+ 
 // Internal helper — called by subscriptionService after a referred user pays
 // POST /api/v1/data/referral/reward  (internal, needs admin secret header)
 router.post('/referral/reward', async (req, res, next) => {
   try {
     const secret = req.headers['x-internal-secret'];
     if (secret !== process.env.ADMIN_SECRET) return res.status(403).json({ error: 'Forbidden' });
-
+ 
     const { userId } = req.body; // the new paying user
     if (!userId) return next(new AppError('userId required', 400));
-
+ 
     // Find if this user was referred
     const { data: use } = await supabase
       .from('referral_uses')
@@ -229,24 +242,24 @@ router.post('/referral/reward', async (req, res, next) => {
       .eq('referred_id', userId)
       .eq('rewarded', false)
       .maybeSingle();
-
+ 
     if (!use) return res.json({ rewarded: false });
-
+ 
     const referrerId = use.referrals?.referrer_id;
     if (!referrerId) return res.json({ rewarded: false });
-
+ 
     // Extend referrer subscription by 30 days
     const { data: sub } = await supabase
       .from('subscriptions')
       .select('expires_at, status')
       .eq('user_id', referrerId)
       .maybeSingle();
-
+ 
     const base = sub?.status === 'active' && sub?.expires_at
       ? new Date(sub.expires_at)
       : new Date();
     base.setDate(base.getDate() + 30);
-
+ 
     await supabase.from('subscriptions').upsert({
       user_id: referrerId,
       plan: sub?.plan || 'quarterly',
@@ -254,19 +267,19 @@ router.post('/referral/reward', async (req, res, next) => {
       expires_at: base.toISOString(),
       updated_at: new Date().toISOString(),
     }, { onConflict: 'user_id' });
-
+ 
     // Mark rewarded
     await supabase.from('referral_uses').update({ rewarded: true }).eq('id', use.id);
     await supabase.rpc('increment_referral_rewards', { ref_id: use.referral_id });
-
+ 
     res.json({ rewarded: true, referrerId, newExpiry: base.toISOString() });
   } catch (err) { next(err); }
 });
-
+ 
 // ══════════════════════════════════════════════════════════════
 // WATCHLIST
 // ══════════════════════════════════════════════════════════════
-
+ 
 // GET /api/v1/data/watchlist
 router.get('/watchlist', authenticate, requireSubscription, async (req, res, next) => {
   try {
@@ -279,7 +292,7 @@ router.get('/watchlist', authenticate, requireSubscription, async (req, res, nex
     res.json({ data: (data || []).map(w => ({ ...w.companies, watchlisted_at: w.created_at })) });
   } catch (err) { next(err); }
 });
-
+ 
 // POST /api/v1/data/watchlist/:companyId
 router.post('/watchlist/:companyId', authenticate, requireSubscription, async (req, res, next) => {
   const UUID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
@@ -293,7 +306,7 @@ router.post('/watchlist/:companyId', authenticate, requireSubscription, async (r
     res.json({ success: true });
   } catch (err) { next(err); }
 });
-
+ 
 // DELETE /api/v1/data/watchlist/:companyId
 router.delete('/watchlist/:companyId', authenticate, requireSubscription, async (req, res, next) => {
   const UUID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
@@ -305,11 +318,11 @@ router.delete('/watchlist/:companyId', authenticate, requireSubscription, async 
     res.json({ success: true });
   } catch (err) { next(err); }
 });
-
+ 
 // ══════════════════════════════════════════════════════════════
 // MANAGEMENT SIGNALS
 // ══════════════════════════════════════════════════════════════
-
+ 
 // GET /api/v1/data/companies/:id/signals
 router.get('/companies/:id/signals', authenticate, requireSubscription, async (req, res, next) => {
   const UUID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
@@ -324,13 +337,13 @@ router.get('/companies/:id/signals', authenticate, requireSubscription, async (r
     res.json({ data });
   } catch (err) { next(err); }
 });
-
+ 
 // ══════════════════════════════════════════════════════════════
 // COMPANY BY TICKER
 // ══════════════════════════════════════════════════════════════
-
+ 
 const cleanTicker = t => t.toUpperCase().replace(/[^A-Z0-9\-]/g,'').slice(0,20);
-
+ 
 router.get('/companies/by-ticker/:ticker', authenticate, requireSubscription, async (req, res, next) => {
   const ticker = cleanTicker(req.params.ticker);
   try {
@@ -341,7 +354,7 @@ router.get('/companies/by-ticker/:ticker', authenticate, requireSubscription, as
     res.json({ data });
   } catch (err) { next(err); }
 });
-
+ 
 router.get('/companies/by-ticker/:ticker/triggers', authenticate, requireSubscription, async (req, res, next) => {
   const ticker = cleanTicker(req.params.ticker);
   try {
@@ -354,7 +367,7 @@ router.get('/companies/by-ticker/:ticker/triggers', authenticate, requireSubscri
     res.json({ data });
   } catch (err) { next(err); }
 });
-
+ 
 router.get('/companies/by-ticker/:ticker/signals', authenticate, requireSubscription, async (req, res, next) => {
   const ticker = cleanTicker(req.params.ticker);
   try {
@@ -367,7 +380,7 @@ router.get('/companies/by-ticker/:ticker/signals', authenticate, requireSubscrip
     res.json({ data });
   } catch (err) { next(err); }
 });
-
+ 
 router.get('/companies/by-ticker/:ticker/snapshot', authenticate, requireSubscription, async (req, res, next) => {
   const ticker = cleanTicker(req.params.ticker);
   try {
@@ -380,7 +393,91 @@ router.get('/companies/by-ticker/:ticker/snapshot', authenticate, requireSubscri
     res.json({ data });
   } catch (err) { next(err); }
 });
-
+ 
+// ── GET /api/v1/data/companies/by-ticker/:ticker/concall-insights ──
+// Returns the latest annual concall_insights row for a company.
+// Authentication: same as /snapshot (paid subscribers only)
+router.get('/companies/by-ticker/:ticker/concall-insights', authenticate, requireSubscription, async (req, res, next) => {
+  const ticker = cleanTicker(req.params.ticker);
+  try {
+    // 1. Resolve company_id from ticker
+    const { data: co, error: coErr } = await supabase
+      .from('companies')
+      .select('id, name, ticker, sector, industry, market_cap, stage, score, catalyst_tags, top_trigger, company_overview')
+      .ilike('ticker', ticker)
+      .maybeSingle();
+ 
+    if (coErr) return next(new AppError('Could not fetch company', 500));
+    if (!co)   return res.json({ data: null });
+ 
+    // 2. Fetch the single concall_insights row for this company
+    const { data: insight, error: iErr } = await supabase
+      .from('concall_insights')
+      .select(`
+        id,
+        fiscal_year,
+        quarter,
+        revenue_str,
+        revenue_growth,
+        ebitda_str,
+        ebitda_margin,
+        ebitda_growth,
+        pat_str,
+        pat_growth,
+        roce_str,
+        roce_badge,
+        full_year_performance,
+        key_outlook,
+        key_growth_drivers,
+        guidance_summary,
+        guidance_revenue_target,
+        guidance_margin_target,
+        risks,
+        has_audit_qualification,
+        has_regulatory_action,
+        revenue_trend,
+        margin_trend,
+        tone,
+        updated_at
+      `)
+      .eq('company_id', co.id)
+      .maybeSingle();
+ 
+    if (iErr) return next(new AppError('Could not fetch concall insights', 500));
+ 
+    res.json({
+      data: {
+        company: co,
+        insight:  insight || null
+      }
+    });
+  } catch (err) { next(err); }
+});
+ 
+// ── GET /api/v1/data/companies/by-ticker/:ticker/concall-insights/preview ──
+// (Public preview variant — no auth, returns only non-sensitive fields)
+// Optional: expose this for the unauthenticated listing preview card
+router.get('/companies/by-ticker/:ticker/concall-insights/preview', async (req, res, next) => {
+  const ticker = cleanTicker(req.params.ticker);
+  try {
+    const { data: co } = await supabase
+      .from('companies')
+      .select('id, name, ticker, sector, score, top_trigger')
+      .ilike('ticker', ticker)
+      .maybeSingle();
+ 
+    if (!co) return res.json({ data: null });
+ 
+    const { data: insight } = await supabase
+      .from('concall_insights')
+      .select('fiscal_year, revenue_str, revenue_growth, pat_str, roce_str, tone, guidance_summary')
+      .eq('company_id', co.id)
+      .maybeSingle();
+ 
+    res.json({ data: { company: co, insight: insight || null } });
+  } catch (err) { next(err); }
+});
+ 
 // ── ANNUAL REPORT BY TICKER (mock generator) ────────────────
 function getSeededValue(str, seed) {
   let hash = seed || 0;
@@ -390,17 +487,45 @@ function getSeededValue(str, seed) {
   }
   return Math.abs(hash);
 }
-
+ 
 function generateMockAnnualReport(co) {
-  const ticker = co.ticker || 'COMP';
+  const ticker = (co.ticker || 'COMP').toUpperCase();
   const name = co.name || 'Company';
   const ind = co.industry || 'IT Services';
   
+  const override = companyMetrics[ticker];
+  if (override) {
+    return {
+      company_name: name,
+      ticker: ticker,
+      industry: ind,
+      fiscal_year: override.fiscal_year || 'FY26',
+      metrics: {
+        revenue: override.revenue || 'N/A',
+        revenue_str: override.revenue_str || override.revenue || 'N/A',
+        revenue_growth: override.revenue_growth || 'N/A',
+        ebitda_margin: override.ebitda_margin || 'N/A',
+        ebitda_str: override.ebitda_str || 'N/A',
+        ebitda_growth: override.ebitda_growth || 'N/A',
+        pat: override.pat || 'N/A',
+        pat_str: override.pat_str || override.pat || 'N/A',
+        pat_growth: override.pat_growth || 'N/A',
+        roce: override.roce || 'N/A',
+        roce_str: override.roce_str || override.roce || 'N/A',
+        roce_badge: override.roce_badge || 'Stable',
+        debt_equity: override.debt_equity || 'N/A'
+      },
+      highlights: override.highlights || [],
+      outlook: override.outlook || '',
+      risks: override.risks || []
+    };
+  }
+ 
   const seed1 = getSeededValue(ticker, 1);
   const seed2 = getSeededValue(ticker, 2);
   const seed3 = getSeededValue(ticker, 3);
   const seed4 = getSeededValue(ticker, 4);
-
+ 
   const revBase = (seed1 % 450) + 10;
   const revenue = revBase * 100;
   const revGrowthVal = (seed2 % 28) - 4;
@@ -409,11 +534,11 @@ function generateMockAnnualReport(co) {
   const ebitdaMargin = ebitdaMarginVal + '%';
   const pat = Math.round(revenue * (ebitdaMarginVal / 100) * 0.62);
   const debtEquity = ((seed4 % 90) / 100).toFixed(2);
-
+ 
   let highlights = [];
   let outlook = "";
   let risks = [];
-
+ 
   if (ind.toLowerCase().includes('defence') || ind.toLowerCase().includes('aerospace')) {
     highlights = [
       `Secured major serial production orders for next-generation defense systems, extending order book visibility to 4.2x FY25 revenues.`,
@@ -470,7 +595,7 @@ function generateMockAnnualReport(co) {
       `Fierce competitive discounting from organized regional players.`
     ];
   }
-
+ 
   return {
     company_name: name,
     ticker: ticker,
@@ -488,7 +613,7 @@ function generateMockAnnualReport(co) {
     risks
   };
 }
-
+ 
 router.get('/companies/by-ticker/:ticker/annual-report', authenticate, requireSubscription, async (req, res, next) => {
   const ticker = cleanTicker(req.params.ticker);
   try {
@@ -501,5 +626,5 @@ router.get('/companies/by-ticker/:ticker/annual-report', authenticate, requireSu
     res.json({ data: mockReport });
   } catch (err) { next(err); }
 });
-
+ 
 module.exports = router;

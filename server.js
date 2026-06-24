@@ -20,6 +20,8 @@ app.use(cors({
     const allowed = [
       'http://127.0.0.1:8080',
       'http://localhost:8080',
+      'http://127.0.0.1:8085',
+      'http://localhost:8085',
       'https://13x-frontend.vercel.app',
       process.env.FRONTEND_URL,
     ].filter(Boolean);

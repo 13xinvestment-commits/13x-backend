@@ -1,0 +1,573 @@
+{
+  "MTARTECH": {
+    "fiscal_year": "FY26",
+    "revenue": "₹876.2 Cr",
+    "revenue_str": "₹876.2 Cr",
+    "revenue_growth": "+29.6% YoY",
+    "ebitda_margin": "19.5%",
+    "ebitda_str": "₹171.2 Cr",
+    "ebitda_growth": "+41.7% YoY",
+    "pat": "₹94.0 Cr",
+    "pat_str": "₹94.0 Cr",
+    "pat_growth": "+76.2% YoY",
+    "roce": "17.2%",
+    "roce_str": "17.2%",
+    "roce_badge": "Improving",
+    "debt_equity": "N/A",
+    "highlights": [
+      "Consolidated revenue from operations of ₹876.2 crore, up 29.6% YoY.",
+      "EBITDA of ₹171.2 crore (19.5% margin), up 41.7% YoY.",
+      "PAT of ₹94.0 crore, up 76.2% YoY."
+    ],
+    "outlook": "Management raised FY27 revenue growth guidance sharply to 80% (±5%) and expects EBITDA margins to stabilise around 24%.",
+    "risks": [
+      "Exception provision of ₹3.8 crore re New Labour Code implementation."
+    ]
+  },
+  "KRBL": {
+    "fiscal_year": "FY26",
+    "revenue": "₹6,097.9 Cr",
+    "revenue_str": "₹6,097.9 Cr",
+    "revenue_growth": "+9% YoY",
+    "ebitda_margin": "N/A",
+    "ebitda_str": "N/A",
+    "ebitda_growth": "N/A",
+    "pat": "₹648 Cr",
+    "pat_str": "₹648 Cr",
+    "pat_growth": "+36% YoY",
+    "roce": "11.94%",
+    "roce_str": "11.94%",
+    "roce_badge": "Declining",
+    "debt_equity": "N/A",
+    "highlights": [
+      "Consolidated revenue from operations of ₹6,097.9 crore, up 9% YoY.",
+      "Domestic revenue hit record ₹4,444 crore, up 10% YoY.",
+      "Consolidated net profit of ₹648 crore, up 36% YoY."
+    ],
+    "outlook": "Management projects minimum 15% growth in export revenue for FY27 and domestic volume growth of ~10%.",
+    "risks": [
+      "Ongoing ED investigation and qualified audit opinion. Geopolitical shipping disruptions in the Middle East."
+    ]
+  },
+  "INFIBEAM": {
+    "fiscal_year": "FY26",
+    "revenue": "₹8,115.8 Cr",
+    "revenue_str": "₹8,115.8 Cr (gross)",
+    "revenue_growth": "+103% YoY",
+    "ebitda_margin": "64%",
+    "ebitda_str": "₹387.3 Cr",
+    "ebitda_growth": "+24% YoY",
+    "pat": "₹332 Cr",
+    "pat_str": "₹332 Cr",
+    "pat_growth": "+58% YoY",
+    "roce": "6.54%",
+    "roce_str": "6.54%",
+    "roce_badge": "Stable",
+    "debt_equity": "N/A",
+    "highlights": [
+      "Consolidated gross revenue of ₹8,115.8 crore, up 103% YoY.",
+      "EBITDA of ₹387.3 crore, up 24% YoY.",
+      "PAT of ₹332 crore, up 58% YoY."
+    ],
+    "outlook": "Management targets GCC/US international expansion contribution of 12-15% of Payments net revenue by FY28.",
+    "risks": [
+      "Investor skepticism regarding low ROCE (6.54%) and operating margin compression to 4.01% in Q3."
+    ]
+  },
+  "RAJESHEXPO": {
+    "fiscal_year": "FY26",
+    "revenue": "₹7,78,716 Cr",
+    "revenue_str": "₹7,78,716 Cr (Disputed)",
+    "revenue_growth": "N/A",
+    "ebitda_margin": "0.05%",
+    "ebitda_str": "N/A",
+    "ebitda_growth": "N/A",
+    "pat": "₹112.50 Cr",
+    "pat_str": "₹112.50 Cr",
+    "pat_growth": "N/A",
+    "roce": "5.95%",
+    "roce_str": "5.95%",
+    "roce_badge": "Weak",
+    "debt_equity": "N/A",
+    "highlights": [
+      "Consolidated revenue reported at ₹7,78,716 crore (subject to SEBI dispute).",
+      "PAT reported at ₹112.50 crore, representing a 0.01% net margin.",
+      "ROCE stands at 5.95% H1 FY26."
+    ],
+    "outlook": "Active SEBI interim order investigation; no forward guidance available.",
+    "risks": [
+      "SEBI interim order alleging massive revenue misreporting. NFRA investigation of statutory auditors."
+    ]
+  },
+  "MANAPPURAM": {
+    "fiscal_year": "FY26",
+    "revenue": "Consolidated revenue of ₹9,409 crore for FY26",
+    "revenue_str": "Consolidated revenue of ₹9,409 crore for FY26",
+    "revenue_growth": "N/A",
+    "ebitda_margin": "10.7%",
+    "ebitda_str": "Not separately disclosed",
+    "ebitda_growth": "10.7%",
+    "pat": "Consolidated PAT of ₹993 crore, down 17.5% YoY, due to elevated provisions in non-gold segments",
+    "pat_str": "Consolidated PAT of ₹993 crore, down 17.5% YoY, due to elevated provisions in non-gold segments",
+    "pat_growth": "17.5%",
+    "roce": "Consolidated ROE estimated at ~7.4% for FY26 (down from 10.0% in FY25 and 20.7% in FY24) per IDBI Capital research, reflecting the drag from non-gold segment stress",
+    "roce_str": "Consolidated ROE estimated at ~7.4% for FY26 (down from 10.0% in FY25 and 20.7% in FY24) per IDBI Capital research, reflecting the drag from non-gold segment stress",
+    "roce_badge": "Sustained",
+    "debt_equity": "N/A",
+    "highlights": [
+      "Consolidated AUM reached ₹63,798 crore as of March 31, 2026, up 48.3% YoY, with the core gold loan book surging 99.1% YoY to ₹50,953 crore — now ~80% of consolidated AUM, up sharply from 59% a year earlier.",
+      "Q4 FY26 alone delivered consolidated PAT of ₹405 crore, up 69.7% sequentially, marking a clear inflection from earlier-year weakness; however, standalone PAT was impacted by a ₹136 crore vehicle-finance write-off (₹84 crore net of provision).",
+      "Governance change: the company disclosed that new investors acquired control effective April 21, 2026 and became promoters; six independent directors resigned effective May 5, 2026, with new directors appointed — a material governance transition investors should track closely going into FY27."
+    ],
+    "outlook": "Subsidiary Asirvad Microfinance remains in a \"recovery phase,\" with Q4 FY26 profitability aided by mark-to-market credits on security receipts and an ECL write-back, rather than purely organic improvement. Consolidated cost of borrowing declined to 8.6% in Q4 FY26 from 9.4% a year earlier; CRAR stood at a healthy 21.3%. Management plans to open 500–550 new gold loan branches in FY27, aided by regulatory changes removing prior-approval requirements for branch openings.",
+    "risks": []
+  },
+  "SANSERA": {
+    "fiscal_year": "FY26",
+    "revenue": "Consolidated revenue from operations of ₹3,497.9 crore, up 16% YoY from ₹3,016.8 crore in FY25 — a record annual topline.",
+    "revenue_str": "Consolidated revenue from operations of ₹3,497.9 crore, up 16% YoY from ₹3,016.8 crore in FY25 — a record annual topline.",
+    "revenue_growth": "16%",
+    "ebitda_margin": "23%",
+    "ebitda_str": "₹632.1 crore, up 23% YoY",
+    "ebitda_growth": "23%",
+    "pat": "₹326.9 crore, up 51% YoY from ₹216.9 crore",
+    "pat_str": "₹326.9 crore, up 51% YoY from ₹216.9 crore",
+    "pat_growth": "51%",
+    "roce": "Not explicitly disclosed for FY26",
+    "roce_str": "Not explicitly disclosed for FY26",
+    "roce_badge": "Sustained",
+    "debt_equity": "N/A",
+    "highlights": [
+      "Q4 FY26 alone delivered record revenue of ₹998.7 crore (+28% YoY) with PAT more than doubling to ₹123.1 crore (+108% YoY) — the first time quarterly PAT crossed ₹100 crore.",
+      "The Aerospace, Defence & Semiconductor (ADS) segment grew 155% YoY to ₹315.5 crore in annual revenue, with an unexecuted ADS order backlog of ₹4,463.8 crore as of March 2026, which management indicated is executable over roughly five years.",
+      "International business posted its highest-ever quarterly topline in Q4, up 47.4% YoY, with Sweden operations hitting record sales of ₹77 crore (+60% YoY) and exports to the US up 25.9% YoY."
+    ],
+    "outlook": "Order book (representing peak annual revenue for new business) stood at ₹1,919 crore as of March 31, 2026. The company inaugurated a new plant in Pantnagar, Uttarakhand (~2.7 lakh sq ft) focused on 2-wheeler OEM crankshaft assemblies, and signed a 60:40 joint venture with Nichidai Corporation (Japan) to manufacture precision forged/machined components for differential assemblies, compressors, and driveline systems. Board recommended a dividend of ₹4 per equity share for FY26; leadership changes included Rahul Kale's elevation to CEO of the Auto business, with a refreshed board effective May 2026.",
+    "risks": []
+  },
+  "SUDARSCHEM": {
+    "fiscal_year": "FY26",
+    "revenue": "Consolidated revenue from operations of ₹9,787.2 crore",
+    "revenue_str": "Consolidated revenue from operations of ₹9,787.2 crore",
+    "revenue_growth": "N/A",
+    "ebitda_margin": "11.8%",
+    "ebitda_str": "Not fully disclosed for the consolidated full year in a single clean figure",
+    "ebitda_growth": "74%",
+    "pat": "Consolidated net profit of ₹40.8 crore",
+    "pat_str": "Consolidated net profit of ₹40.8 crore",
+    "pat_growth": "106%",
+    "roce": "6.0% (Adjusted, 9M FY26), down from a five-year average of approximately 10.57%",
+    "roce_str": "6.0% (Adjusted, 9M FY26), down from a five-year average of approximately 10.57%",
+    "roce_badge": "Sustained",
+    "debt_equity": "N/A",
+    "highlights": [
+      "Net debt declined to ₹755 crore as of March 2026, down from ₹934 crore in December 2025, aided by a successful inventory reduction programme (€29 million reduced in Q4 alone, against a €20 million target).",
+      "Legacy Sudarshan pigment business remained healthy, with Adjusted EBITDA margin of 13.3% in Q3 FY26 despite soft sector demand; the acquired Heubach business, by contrast, posted a Q3 EBITDA loss of -₹38 crore due to destocking and pricing pressure.",
+      "RIECO (engineering subsidiary) revenue grew 17.5% YoY to ₹268 crore for FY26."
+    ],
+    "outlook": "Management revised the acquired Heubach group's FY26 EBITDA guidance down to approximately €16 million (from an earlier, higher target), reflecting the severity of the destocking cycle. The Heubach acquisition diluted promoter holding sharply — down to 8.19% as of the latest filing, following a rights issue — a significant governance and ownership-structure shift investors should track. Management stated \"the worst is behind us,\" citing early signs of destocking easing and customer purchasing resuming from January 2026.",
+    "risks": []
+  },
+  "PNCINFRA": {
+    "fiscal_year": "FY26",
+    "revenue": "Consolidated revenue of ₹5,368 crore",
+    "revenue_str": "Consolidated revenue of ₹5,368 crore",
+    "revenue_growth": "N/A",
+    "ebitda_margin": "12.58%",
+    "ebitda_str": "Standalone EBITDA margin of 12.58%",
+    "ebitda_growth": "N/A",
+    "pat": "Consolidated annual PAT of ₹832 crore, which includes a ₹337 crore net-of-tax exceptional gain from the strategic monetisation of 12 HAM",
+    "pat_str": "Consolidated annual PAT of ₹832 crore, which includes a ₹337 crore net-of-tax exceptional gain from the strategic monetisation of 12 HAM",
+    "pat_growth": "17%",
+    "roce": "Latest half-yearly ROCE of 11.61% (H1 FY26), down from a five-year average of 16.10%",
+    "roce_str": "Latest half-yearly ROCE of 11.61% (H1 FY26), down from a five-year average of 16.10%",
+    "roce_badge": "Declining",
+    "debt_equity": "N/A",
+    "highlights": [
+      "Standalone revenue was weighed down through the first three quarters by delayed appointed dates on several HAM projects — Q2 FY26 standalone revenue fell 20.98% YoY to ₹1,127.64 crore, marking the lowest quarterly revenue in seven quarters — before partially recovering in Q4 (standalone revenue of ₹1,458 crore, +3% YoY).",
+      "Order book stood at ₹18,094–19,343 crore through FY26 (3.5x–3.9x book-to-bill), with diversification into solar EPC (~₹2,000 crore project value) and a ₹2,957 crore mining contract during the year.",
+      "Management's original FY26 revenue growth guidance of 15–20% was sharply cut to ~5% mid-year due to delayed HAM appointed dates and subdued NHAI awarding activity."
+    ],
+    "outlook": "Net working capital cycle deteriorated to 186 days by Q2 FY26 (from 157 days at Q1-end), partly due to Jal Jeevan Mission receivables of ~₹800 crore tied to delayed central government fund releases. Residual HAM equity commitment of ~₹542 crore remains to be invested over the next two years (~₹350 crore in FY27, balance in FY28), expected to be internal-accrual funded. The company has bid for projects worth ~₹17,000 crore (3 HAM + 16 EPC) and identified a further pipeline of ~₹1 lakh crore for future bidding.",
+    "risks": []
+  },
+  "SJVN": {
+    "fiscal_year": "FY26",
+    "revenue": "Consolidated revenue from operations of ₹4,528.29 crore, up ~47% YoY from ₹3,072.01 crore",
+    "revenue_str": "Consolidated revenue from operations of ₹4,528.29 crore, up ~47% YoY from ₹3,072.01 crore",
+    "revenue_growth": "47%",
+    "ebitda_margin": "60.79%",
+    "ebitda_str": "Not separately disclosed",
+    "ebitda_growth": "N/A",
+    "pat": "Consolidated net profit of ₹641.85 crore, down from ₹818.02 crore in FY25",
+    "pat_str": "Consolidated net profit of ₹641.85 crore, down from ₹818.02 crore in FY25",
+    "pat_growth": "3.9%",
+    "roce": "Average ROCE of 6.45% (per Q3 FY26 analysis), deteriorating to 4.08% on a half-yearly (H1 FY26) basis — a multi-quarter low",
+    "roce_str": "Average ROCE of 6.45% (per Q3 FY26 analysis), deteriorating to 4.08% on a half-yearly (H1 FY26) basis — a multi-quarter low",
+    "roce_badge": "Declining",
+    "debt_equity": "N/A",
+    "highlights": [
+      "Q4 FY26 swung to a consolidated net loss of ₹117.84–117.98 crore despite revenue nearly tripling YoY to ₹1,496.47 crore, as interest expenses more than doubled sequentially to ₹522.14 crore — the highest quarterly figure on record — fully offsetting strong operational performance.",
+      "The company commissioned 1,730 MW of new capacity during FY26 (1,070 MW solar, 660 MW thermal), including the first unit of the 1,320 MW Buxar Thermal Power Project (Nov 2025) and the 1,000 MW Bikaner Solar Power Project (Dec 2025), taking total installed capacity to 4,196 MW.",
+      "Consolidated losses were driven significantly by subsidiaries SGEL (-₹257 crore) and SJVN Thermal (-₹92 crore), both still in early operational phases bearing high finance costs."
+    ],
+    "outlook": "Total debt rose to ₹32,206.75 crore as of March 2026 from ₹27,036.40 crore a year earlier, with fresh borrowings of ₹5,461.50 crore raised during the year; debt-to-equity worsened to 1.82–2.26x and debt-to-EBITDA to 7.54x — flagged by analysts as a structurally unsustainable leverage trajectory relative to current returns. An impairment loss of ₹174.11 crore (standalone) / ₹235.86 crore (consolidated) was recognised during the year. Capital work-in-progress stood at a massive ₹19,142.71 crore, underscoring the scale of projects still under execution and the associated near-term funding/interest burden.",
+    "risks": []
+  },
+  "TIINDIA": {
+    "fiscal_year": "FY26",
+    "revenue": "Consolidated revenue of ₹22,847.43 crore, up 17.38% YoY",
+    "revenue_str": "Consolidated revenue of ₹22,847.43 crore, up 17.38% YoY",
+    "revenue_growth": "17.38%",
+    "ebitda_margin": "12%",
+    "ebitda_str": "Not explicitly disclosed consolidated",
+    "ebitda_growth": "N/A",
+    "pat": "Consolidated PAT of ₹1,118.22 crore",
+    "pat_str": "Consolidated PAT of ₹1,118.22 crore",
+    "pat_growth": "36.19%",
+    "roce": "",
+    "roce_str": "",
+    "roce_badge": "Sustained",
+    "debt_equity": "N/A",
+    "highlights": [
+      "Q4 FY26 consolidated revenue hit a record ₹6,214.74 crore (+20.68% YoY), but consolidated net profit fell 48.48% QoQ to ₹85.45 crore due to an unusually elevated 53.40% effective tax rate.",
+      "Standalone free cash flow for the full year was ₹826 crore — representing 100% of standalone PAT — reflecting strong underlying cash conversion despite the headline profit volatility.",
+      "The Engineering segment was the standout performer; the Mobility business showed full-year revenue growth from ₹671 crore to ₹783 crore."
+    ],
+    "outlook": "Subsidiary TI Clean Mobility (EV manufacturing) continues to weigh on consolidated profits via fair-value losses, despite raising ₹3,000 crore and targeting a $1 billion turnover in 4–5 years; Q4 EV volumes were modest (87 heavy trucks, 241 small commercial vehicles, 1,176 three-wheelers, no tractor billing). The company acquired full ownership of EV subsidiary TIVOLT for ₹30 crore during the year. Total dividend for FY26 was ₹3.50 per share (₹1.50 final + ₹2.00 interim).",
+    "risks": []
+  },
+  "SWSOLAR": {
+    "fiscal_year": "FY26",
+    "revenue": "Consolidated revenue of ₹7,548.05 crore, up 20% YoY from ₹6,301.86 crore — the highest annual turnover since listing",
+    "revenue_str": "Consolidated revenue of ₹7,548.05 crore, up 20% YoY from ₹6,301.86 crore — the highest annual turnover since listing",
+    "revenue_growth": "20%",
+    "ebitda_margin": "53%",
+    "ebitda_str": "Operational EBITDA of ₹444 crore, up 53% YoY",
+    "ebitda_growth": "53%",
+    "pat": "Consolidated net loss of ₹295.79 crore",
+    "pat_str": "Consolidated net loss of ₹295.79 crore",
+    "pat_growth": "N/A",
+    "roce": "Latest quarterly ROCE of 22.40%, a sharp improvement versus a troubling five-year average of -43.08%, reflecting years of historical capital destruction before the recent operational turnaround.",
+    "roce_str": "Latest quarterly ROCE of 22.40%, a sharp improvement versus a troubling five-year average of -43.08%, reflecting years of historical capital destruction before the recent operational turnaround.",
+    "roce_badge": "Improving",
+    "debt_equity": "N/A",
+    "highlights": [
+      "Q4 FY26 delivered the company's highest-ever quarterly PAT since listing at ₹142 crore (+158% YoY), though Q4 revenue of ₹1,945.61 crore was actually down ~22.77% YoY (per independent analysis), with non-operating income representing over a third of Q4 profit before tax — flagged as a quality-of-earnings concern.",
+      "The company commissioned 4.5 GW AC of solar capacity during FY26 — its highest-ever annual execution and ~15% of India's total utility-scale solar installations for the year.",
+      "Gross margin improved to 10.5% from 10.1% in FY25, with the gain concentrated in the International EPC segment (margin up to 13.2% from 8%)."
+    ],
+    "outlook": "Order inflow for FY26 reached ₹10,062 crore (+43% YoY), pushing unexecuted order value (UOV) to ₹11,813 crore as of March 2026 — the highest level since the COVID period. O&M portfolio expanded 50% YoY to 13.5 GWp from 8.7 GWp, strengthening recurring revenue visibility. Balance sheet concerns persist: debt-to-equity around 1.67x, pledged promoter shares of 27.62%, and a sharp institutional exodus (mutual fund holdings collapsed from 5.39% to 0.53%) — all flagged by independent analysts as signs of ongoing financial stress despite the operational turnaround.",
+    "risks": [
+      "Balance sheet concerns persist: debt-to-equity around 1.67x, pledged promoter shares of 27.62%, and a sharp institutional exodus (mutual fund holdings collapsed from 5.39% to 0.53%) — all flagged by independent analysts as signs of ongoing financial stress despite the operational turnaround."
+    ]
+  },
+  "SUNTECK": {
+    "fiscal_year": "FY26",
+    "revenue": "Consolidated revenue of ₹1,124 crore, up 32% YoY from ₹853 crore in FY25.",
+    "revenue_str": "Consolidated revenue of ₹1,124 crore, up 32% YoY from ₹853 crore in FY25.",
+    "revenue_growth": "32%",
+    "ebitda_margin": "64%",
+    "ebitda_str": "₹305 crore, up 64% YoY from ₹186 crore",
+    "ebitda_growth": "64%",
+    "pat": "₹202 crore, up 34% YoY from ₹150 crore",
+    "pat_str": "₹202 crore, up 34% YoY from ₹150 crore",
+    "pat_growth": "34%",
+    "roce": "Latest quarterly (Q4 FY26) ROCE of 6.05% — an improvement from a historical average of just 3.39%, though independent analysts flag both figures as weak for a growth-oriented developer",
+    "roce_str": "Latest quarterly (Q4 FY26) ROCE of 6.05% — an improvement from a historical average of just 3.39%, though independent analysts flag both figures as weak for a growth-oriented developer",
+    "roce_badge": "Improving",
+    "debt_equity": "N/A",
+    "highlights": [
+      "Pre-sales grew 25% YoY to ₹3,157 crore for the full year; Q4 alone crossed ₹1,000 crore (₹1,064 crore, +22% YoY), beating analyst estimates per Equirus Securities.",
+      "Over the last three years, the company has roughly doubled revenue and nearly tripled net profit, reflecting sustained operational momentum rather than a single-year spike.",
+      "Net cash flow surplus rose 48% YoY to ₹552 crore; net worth increased to ₹4,472 crore from ₹3,260 crore."
+    ],
+    "outlook": "Independent analysis flags margin and return-quality concerns despite the strong headline growth: Q4 EBITDA margin actually compressed to 29% from 33% YoY, and mutual fund holdings reportedly fell from 3.08% to 1.46% over three quarters, suggesting institutional caution even as headline numbers improved. The company added three new MMR projects during FY26 (Andheri redevelopment, Mira Road JDA, land parcel near Mumbai airport) with combined GDV of ~₹5,000 crore, taking total GDV to approximately ₹44,100 crore (₹441 billion). Formed a joint investment platform with IFC (World Bank Group) of up to ₹750 crore for green urban housing projects in MMR, targeting the mid-income demographic with 4–6 projects (~12,000 units).",
+    "risks": [
+      "Independent analysis flags margin and return-quality concerns despite the strong headline growth: Q4 EBITDA margin actually compressed to 29% from 33% YoY, and mutual fund holdings reportedly fell from 3.08% to 1.46% over three quarters, suggesting institutional caution even as headline numbers improved."
+    ]
+  },
+  "DATAPATTNS": {
+    "fiscal_year": "FY26",
+    "revenue": "₹925 crore, up 31% YoY from ₹708 crore in FY25.",
+    "revenue_str": "₹925 crore, up 31% YoY from ₹708 crore in FY25.",
+    "revenue_growth": "31%",
+    "ebitda_margin": "36%",
+    "ebitda_str": "₹371–374 crore, up 35–36% YoY",
+    "ebitda_growth": "36%",
+    "pat": "₹271 crore, up 22% YoY from ₹221–222 crore.",
+    "pat_str": "₹271 crore, up 22% YoY from ₹221–222 crore.",
+    "pat_growth": "22%",
+    "roce": "Latest quarterly ROCE of 24.60%, down from a five-year average of 28.56%",
+    "roce_str": "Latest quarterly ROCE of 24.60%, down from a five-year average of 28.56%",
+    "roce_badge": "Sustained",
+    "debt_equity": "N/A",
+    "highlights": [
+      "Q4 FY26 alone delivered a 99% sequential revenue surge with net profit of ₹138 crore (+21.3% YoY, +137.4% QoQ), reflecting the inherently lumpy, milestone-driven nature of defence project revenue recognition.",
+      "Order inflows for FY26 surged 216% YoY to ₹1,121 crore, diversified across radar systems, avionics, electronic warfare, services, and strategic electronics applications.",
+      "Revenue growth has been volatile quarter-to-quarter (Q2 FY26 revenue surged 209.53% QoQ, then Q3 FY26 fell 43.69% sequentially) — independent analysts note this is structural to defence contracting rather than an execution concern, given the project-milestone-based revenue model."
+    ],
+    "outlook": "Order book stood at approximately ₹2,062 crore as of May 15, 2026 (including negotiated orders), providing forward revenue visibility, though analysts note the broader defence sector's order backlog-to-revenue ratio (~4.6x) suggests Data Patterns' visibility is somewhat shorter than some peers. The stock trades at a significant valuation premium (P/E around 79–97x), which independent analysts flag as leaving little room for execution disappointment despite strong fundamentals. Zero promoter pledging and a debt-free, net-cash balance sheet provide financial flexibility; mutual fund holding rose 159 bps to 9.20% in Q4 FY26, signalling growing institutional conviction.",
+    "risks": []
+  },
+  "AEGISLOG": {
+    "fiscal_year": "FY26",
+    "revenue": "Consolidated revenue from operations of ₹8,333 crore, up 23% YoY from ₹6,764 crore in FY25.",
+    "revenue_str": "Consolidated revenue from operations of ₹8,333 crore, up 23% YoY from ₹6,764 crore in FY25.",
+    "revenue_growth": "23%",
+    "ebitda_margin": "36%",
+    "ebitda_str": "Normalised EBITDA of ₹1,599 crore, up 36% YoY. Gas Division EBITDA surged 68% YoY to ₹1,131 crore",
+    "ebitda_growth": "36%",
+    "pat": "₹1,107 crore, up 41% YoY from ₹788 crore — crossing the ₹1,000 crore PAT milestone for the first time. Consolidated EPS was ₹25.59.",
+    "pat_str": "₹1,107 crore, up 41% YoY from ₹788 crore — crossing the ₹1,000 crore PAT milestone for the first time. Consolidated EPS was ₹25.59.",
+    "pat_growth": "41%",
+    "roce": "Latest-period ROCE of 18.01%, comfortably above cost of capital per independent analysis",
+    "roce_str": "Latest-period ROCE of 18.01%, comfortably above cost of capital per independent analysis",
+    "roce_badge": "Sustained",
+    "debt_equity": "N/A",
+    "highlights": [
+      "Q4 FY26 was the company's strongest-ever quarter: revenue of ₹2,594 crore (+52% YoY), normalised EBITDA of ₹670 crore (+54% YoY), and PAT of ₹455 crore (+43% YoY) — with the Gas/LPG segment alone posting its highest-ever quarterly revenue (₹2,410 crore) and EBITDA (₹549 crore, +136% YoY).",
+      "LPG business delivered record annual revenue of ₹7,689 crore (+26% YoY), with distribution volumes surging 45% YoY to 7.54 lakh metric tons and terminal throughput up 14% to 5.15 million tons.",
+      "Interest costs rose sharply — up 145.62% sequentially and 20.12% YoY in Q4 — reflecting the cost of aggressive capacity expansion; debt-to-EBITDA stood at a moderate 2.71x."
+    ],
+    "outlook": "Board recommended a final dividend of ₹6.70/share, in addition to an interim dividend of ₹2/share already paid during the year. Net cash inflow from operating activities for FY26 was ₹2,028 crore; cash and investments on the balance sheet stood at approximately ₹6,000 crore. Completed acquisition of a 75% stake in Hindustan Aegis LPG Limited at Haldia, adding 25,000 MT of LPG storage and marking entry into the East Coast market.",
+    "risks": []
+  },
+  "AARTIIND": {
+    "fiscal_year": "FY26",
+    "revenue": "Consolidated revenue of ₹9,018 crore",
+    "revenue_str": "Consolidated revenue of ₹9,018 crore",
+    "revenue_growth": "12%",
+    "ebitda_margin": "15%",
+    "ebitda_str": "₹1,172 crore, up 15% YoY",
+    "ebitda_growth": "15%",
+    "pat": "Consolidated PAT of ₹419 crore, up 27% YoY from ₹331 crore",
+    "pat_str": "Consolidated PAT of ₹419 crore, up 27% YoY from ₹331 crore",
+    "pat_growth": "27%",
+    "roce": "Trailing ROCE of 5.65%, down sharply from a five-year average of 10.91% — reflecting that newly commissioned capacity has not yet reached optimal utilisation",
+    "roce_str": "Trailing ROCE of 5.65%, down sharply from a five-year average of 10.91% — reflecting that newly commissioned capacity has not yet reached optimal utilisation",
+    "roce_badge": "Improving",
+    "debt_equity": "N/A",
+    "highlights": [
+      "Q4 FY26 PAT rose 42.71% YoY to ₹137 crore despite a sequential revenue decline, with operating margin expanding to a record 15.46–15.56%; quarterly EPS of ₹3.78 was the highest on record.",
+      "Interest costs surged 75% YoY in Q4 to ₹112 crore — the highest quarterly interest burden to date — reflecting elevated debt taken on to fund capacity expansion (consolidated borrowings rose to ₹4,921 crore from ₹3,789 crore).",
+      "Two major international agreements were signed during the year: a ₹200–250 crore backward-integration partnership over 15 years, and a $150 million multi-year agrochemical supply agreement extending through March 2030."
+    ],
+    "outlook": "Middle East geopolitical disruption affected feedstock availability and product placement; management rerouted volumes to mitigate the impact and is exploring alternate sourcing. Net cash flow from operating activities declined to ₹781 crore for FY26 from ₹1,238 crore in FY25, driven by an increase in trade receivables. Credit ratings retained at AA-/Negative (long-term) and A1+ (commercial paper) from CRISIL and India Ratings, with the \"Negative\" outlook flagging continued rating-agency caution.",
+    "risks": []
+  },
+  "ARE&M": {
+    "fiscal_year": "FY26",
+    "revenue": "₹13,549 crore, up 9.2% YoY from ₹12,405 crore.",
+    "revenue_str": "₹13,549 crore, up 9.2% YoY from ₹12,405 crore.",
+    "revenue_growth": "9.2%",
+    "ebitda_margin": "13%",
+    "ebitda_str": "Not fully disclosed for the consolidated full year",
+    "ebitda_growth": "+13%",
+    "pat": "₹1,206.89 crore, down 5.21% YoY from ₹1,273.17 crore",
+    "pat_str": "₹1,206.89 crore, down 5.21% YoY from ₹1,273.17 crore",
+    "pat_growth": "5.21%",
+    "roce": "Average ROCE of 16.81% over recent years, deteriorating to 11.88% in the latest period",
+    "roce_str": "Average ROCE of 16.81% over recent years, deteriorating to 11.88% in the latest period",
+    "roce_badge": "Declining",
+    "debt_equity": "N/A",
+    "highlights": [
+      "Q4 FY26 net profit surged 94–98% YoY to ₹314–321 crore on revenue of ₹3,536 crore (+15.5–16% YoY) — the company's highest-ever quarterly revenue — though independent analysis attributes much of the sequential jump to lower depreciation and favourable tax rates rather than core operating margin improvement.",
+      "The company's New Energy business grew 60% YoY in revenue, while the Automotive OEM segment grew over 20%.",
+      "Q4 results included ₹186.72 crore received from an insurance company as full settlement of a claim related to fire damage at the Chittoor facility (January 2023) — a one-time item boosting reported profitability."
+    ],
+    "outlook": "Operating margins have compressed by over 240 bps over the past several quarters (from 13.31% to 10.90%), which independent analysts attribute to competitive intensity, elevated raw material (lead) costs, and dilutive investment drag from new energy initiatives. The Giga Corridor R&D centre and qualification plant are under commissioning and expected to become operational within a month of the announcement, marking the first milestone toward Amara Raja's \"Made in India\" cell manufacturing. Total dividend for FY26 was ₹10.60 per share (₹5.20 final + ₹5.40 interim already paid).",
+    "risks": []
+  },
+  "DELTACORP": {
+    "fiscal_year": "FY26",
+    "revenue": "Consolidated revenue from operations of ₹688.46 crore",
+    "revenue_str": "Consolidated revenue from operations of ₹688.46 crore",
+    "revenue_growth": "5.64%",
+    "ebitda_margin": "34.8%",
+    "ebitda_str": "Not cleanly disclosed for the full year on a consolidated basis",
+    "ebitda_growth": "34.8%",
+    "pat": "Consolidated net profit of ₹85.29 crore, down 65.75% YoY from ₹248.99 crore",
+    "pat_str": "Consolidated net profit of ₹85.29 crore, down 65.75% YoY from ₹248.99 crore",
+    "pat_growth": "65.75%",
+    "roce": "Not explicitly disclosed",
+    "roce_str": "Not explicitly disclosed",
+    "roce_badge": "Weak",
+    "debt_equity": "N/A",
+    "highlights": [
+      "Q4 FY26 alone saw consolidated net profit collapse 90% YoY to ₹16.45 crore on revenue down 11.72% YoY to ₹161.25 crore.",
+      "The Online Gaming Act, 2025 (prohibiting real-money online gaming) forced the company to write down the carrying value of its online gaming investments to nil, with a cumulative ₹378.34–459.52 crore reduction in fair value recognised through Other Comprehensive Income during FY26.",
+      "Gaming operations segment (the core casino business) contributed ₹642.59 crore to consolidated FY26 revenue, down from ₹678.60 crore in FY25."
+    ],
+    "outlook": "Major regulatory overhang: cumulative GST demands across the company and subsidiaries now exceed ₹24,959.69 crore (covering July 2017–March 2023), disclosed as contingent liabilities; the Supreme Court has separately upheld 28% GST on online gaming bets, triggering a sharp stock decline. The company filed an NCLT application to demerge into separate Gaming and Hospitality/Real Estate entities — a structural separation that may help isolate the casino business from online-gaming-related regulatory risk. A new casino vessel was inducted into the Mandovi River with commercial operations expected from April 2026; a 375+ key hotel project in Panjim is targeting completion in Q4 FY27.",
+    "risks": [
+      "Major regulatory overhang: cumulative GST demands across the company and subsidiaries now exceed ₹24,959.69 crore (covering July 2017–March 2023), disclosed as contingent liabilities; the Supreme Court has separately upheld 28% GST on online gaming bets, triggering a sharp stock decline.",
+      "The company filed an NCLT application to demerge into separate Gaming and Hospitality/Real Estate entities — a structural separation that may help isolate the casino business from online-gaming-related regulatory risk."
+    ]
+  },
+  "ETHOSLTD": {
+    "fiscal_year": "FY26",
+    "revenue": "Consolidated revenue of ₹1,612 crore, up 28.8% YoY",
+    "revenue_str": "Consolidated revenue of ₹1,612 crore, up 28.8% YoY",
+    "revenue_growth": "28.8%",
+    "ebitda_margin": "15.3%",
+    "ebitda_str": "Reported EBITDA",
+    "ebitda_growth": "N/A",
+    "pat": "PAT after minority interest of ₹94.8 crore, virtually unchanged YoY",
+    "pat_str": "PAT after minority interest of ₹94.8 crore, virtually unchanged YoY",
+    "pat_growth": "N/A",
+    "roce": "Average ROCE of 12.41%, with the latest quarterly figure at 12.41–13.22%",
+    "roce_str": "Average ROCE of 12.41%, with the latest quarterly figure at 12.41–13.22%",
+    "roce_badge": "Sustained",
+    "debt_equity": "N/A",
+    "highlights": [
+      "A Swiss Franc appreciation of approximately 26% against the rupee (CHF/INR moved from ₹96.98 to ₹122.6) imposed an estimated ₹18.7 crore adverse gross margin impact, compressing normalised EBITDA margins by 160 bps; management chose limited cost pass-through to protect long-term brand equity and customer relationships.",
+      "The company added 22 boutiques during FY26 (six in Q4 alone, including first outlets in Jodhpur, Srinagar, Kanpur, Agra, and Faridabad), ending the year at 98 boutiques across 32 cities, up from 73 a year earlier.",
+      "Marketing spend rose 67% YoY to ₹40 crore, directed at new boutique openings and brand launches."
+    ],
+    "outlook": "Completed a Rights Issue raising ~₹410 crore during FY26, strengthening the balance sheet; consolidated cash and bank balances rose to ₹661.7 crore from ₹220 crore, and the cash conversion cycle improved to 180 days from 215 days. Other income has repeatedly represented 35–43% of profit before tax across several quarters in FY26 — flagged by independent analysts as a quality-of-earnings concern masking weaker core retail profitability. Same-Store Sales Growth (SSSG) of 14.2% for FY26, and Certified Pre-Owned (CPO) business growth of 22.9% YoY, point to healthy underlying demand even amid margin pressure.",
+    "risks": [
+      "Other income has repeatedly represented 35–43% of profit before tax across several quarters in FY26 — flagged by independent analysts as a quality-of-earnings concern masking weaker core retail profitability."
+    ]
+  },
+  "NEOGEN": {
+    "fiscal_year": "FY26",
+    "revenue": "Consolidated revenue of ₹862 crore, up 11% YoY",
+    "revenue_str": "Consolidated revenue of ₹862 crore, up 11% YoY",
+    "revenue_growth": "11%",
+    "ebitda_margin": "15.9%",
+    "ebitda_str": "₹137 crore consolidated, largely flat YoY",
+    "ebitda_growth": "3%",
+    "pat": "Consolidated PAT of ₹29 crore, down 17% YoY, due to higher finance costs and Neogen Ionics expansion overheads",
+    "pat_str": "Consolidated PAT of ₹29 crore, down 17% YoY, due to higher finance costs and Neogen Ionics expansion overheads",
+    "pat_growth": "17%",
+    "roce": "Not explicitly disclosed in available sources for FY26.",
+    "roce_str": "Not explicitly disclosed in available sources for FY26.",
+    "roce_badge": "Sustained",
+    "debt_equity": "N/A",
+    "highlights": [
+      "Q4 FY26 consolidated PAT rose to ₹11 crore from ₹2 crore a year ago, aided by a low base from one-off Dahej fire-related expenses in the prior-year quarter; Q4 revenue rose 22% YoY to ₹247 crore with EBITDA margin holding steady at 17.8%.",
+      "Consolidated interest expense rose to ₹75 crore in FY26 from ₹49 crore in FY25, reflecting capex deployment for Neogen Ionics and the Dahej facility rebuild; total debt stood at ₹1,330 crore (₹1,295 crore net) at FY26-end.",
+      "Cash flow from operations turned positive (₹14.6 crore) in H2 FY26 after a negative H1, signalling improving working capital management in the latter half of the year."
+    ],
+    "outlook": "The Dahej replacement facility's commissioning was rescheduled to June 2026 (from an earlier target), reflecting continued execution delays in the post-fire rebuild. Promoter group infused ₹150–161 crore via preferential allotment during the year to support battery materials capacity addition. Cumulative insurance claims received for the Dahej fire reached ₹140 crore (as of one update) to ₹83.48 crore (9M figure per another source), with a net claim receivable balance still outstanding (~₹203–251 crore depending on reporting period).",
+    "risks": []
+  },
+  "TRIVENI": {
+    "fiscal_year": "FY26",
+    "revenue": "Revenue from operations",
+    "revenue_str": "Revenue from operations",
+    "revenue_growth": "10.6%",
+    "ebitda_margin": "16.9%",
+    "ebitda_str": "Consolidated EBITDA margin rose to 16.9%, amounting to approximately ₹624 crore, up from ₹533 crore in FY25.",
+    "ebitda_growth": "N/A",
+    "pat": "₹268.7 crore, up 12.8% YoY from ₹238.3 crore",
+    "pat_str": "₹268.7 crore, up 12.8% YoY from ₹238.3 crore",
+    "pat_growth": "12.8%",
+    "roce": "Not explicitly disclosed in available sources.",
+    "roce_str": "Not explicitly disclosed in available sources.",
+    "roce_badge": "Sustained",
+    "debt_equity": "N/A",
+    "highlights": [
+      "The distillery segment was the primary growth driver, achieving its highest-ever production and sales volumes (alcohol production +18.2% YoY to 236,510 KL), benefiting from lower maize procurement costs and improved feedstock availability; distillery annual revenue (net of excise) reached ₹1,550 crore.",
+      "Sugarcane crushing declined 8.8% to 8.25 million tonnes in the 2025-26 season due to lower yields in western UP and cane diversion toward alternative sweeteners, though improved recovery kept sugar production roughly flat at 0.91 million tonnes.",
+      "Q4 FY26 net profit declined 10.5% YoY to ₹167.4 crore, pressured by elevated sugarcane procurement costs and weaker Power Transmission Business profitability/deferred deliveries."
+    ],
+    "outlook": "Major corporate restructuring completed: the Composite Scheme of Arrangement became effective May 19, 2026 — Sir Shadi Lal Enterprises (SSEL) was amalgamated into Triveni, and the Power Transmission Business is being demerged into a new entity, Triveni Power Transmission Limited (TPTL), effective April 1, 2026 (accounting impact reflected in FY27). TPTL is expected to list independently by end of August 2026. ICRA upgraded the company's long-term credit rating to AA+ Stable, removing it from \"under-watch\" status. Promoters disclosed zero share encumbrance for FY26, a clean governance signal.",
+    "risks": []
+  },
+  "WENDT": {
+    "fiscal_year": "FY26",
+    "revenue": "Standalone revenue from operations of ₹209.31 crore, down 2.6% YoY from ₹214.87 crore",
+    "revenue_str": "Standalone revenue from operations of ₹209.31 crore, down 2.6% YoY from ₹214.87 crore",
+    "revenue_growth": "2.6%",
+    "ebitda_margin": "16.1%",
+    "ebitda_str": "Not disclosed as a single full-year figure",
+    "ebitda_growth": "N/A",
+    "pat": "Standalone net profit of ₹22.75 crore, down 40.6% YoY from ₹38.29 crore",
+    "pat_str": "Standalone net profit of ₹22.75 crore, down 40.6% YoY from ₹38.29 crore",
+    "pat_growth": "40.6%",
+    "roce": "Five-year average ROCE of 32.02–33.44%, though quarterly figures through FY26 (e.g., 24.31% in Q2) show clear deterioration from this historical level as profitability has compressed.",
+    "roce_str": "Five-year average ROCE of 32.02–33.44%, though quarterly figures through FY26 (e.g., 24.31% in Q2) show clear deterioration from this historical level as profitability has compressed.",
+    "roce_badge": "Declining",
+    "debt_equity": "N/A",
+    "highlights": [
+      "Full-year PBT fell 38.7% YoY to ₹30.48 crore from ₹49.69 crore, driven by cost of materials consumed rising 16.4% YoY to ₹80.87 crore even as revenue declined 2.6% — a clear margin-squeeze pattern.",
+      "Q4 FY26 standalone net profit fell 40.3% YoY to ₹7.46 crore (per one source) / consolidated PAT of ₹5.09 crore (down 60.51% YoY per another source) — exact figures vary by standalone/consolidated basis across reporting sources, but the directional decline is consistent.",
+      "Employee costs surged disproportionately (24–33% YoY increases reported across different quarters) even as revenue declined, indicating adverse operating leverage."
+    ],
+    "outlook": "Operating margins have compressed sharply and repeatedly through FY26 — from 22.76% to 11.81% in Q2, and from 24.49% to 16.35% in Q4 — reflecting sustained demand softness in core industrial tooling and abrasives markets, not a single-quarter event. Board recommended a final dividend of ₹10 per share, taking the total FY26 dividend to ₹30 per share (consistent with the company's historical ~25% payout ratio). A CEO resignation in September 2025 and a ₹94,400 fine for a 34-day board-structure non-compliance were also disclosed during the year — minor governance items worth noting, though not characterised as major issues.",
+    "risks": []
+  },
+  "LUXIND": {
+    "fiscal_year": "FY26",
+    "revenue": "Consolidated revenue from operations rose 13% YoY to ₹2,915 crore",
+    "revenue_str": "Consolidated revenue from operations rose 13% YoY to ₹2,915 crore",
+    "revenue_growth": "13%",
+    "ebitda_margin": "5.66%",
+    "ebitda_str": "Not disclosed as a clean full-year figure, though quarterly margins compressed sharply throughout the year — Q2 FY26 EBITDA margin fell to 5.66% from 9.59% YoY, and Q3 FY26 fell to 6.3% from 9.8% YoY.",
+    "ebitda_growth": "9.59%",
+    "pat": "Consolidated net profit of ₹106.07 crore, down ~36% YoY from ₹164.54 crore",
+    "pat_str": "Consolidated net profit of ₹106.07 crore, down ~36% YoY from ₹164.54 crore",
+    "pat_growth": "36%",
+    "roce": "Half-year ROCE collapsed to 8.44% (per Q3 FY26 analysis), down sharply from a five-year average of 19.47%",
+    "roce_str": "Half-year ROCE collapsed to 8.44% (per Q3 FY26 analysis), down sharply from a five-year average of 19.47%",
+    "roce_badge": "Improving",
+    "debt_equity": "N/A",
+    "highlights": [
+      "Margin compression was a persistent theme across nearly every quarter of FY26: Q2 gross margin fell to 5.01% from 10.88% YoY; Q3 net profit fell 59.73% YoY despite 21.72% revenue growth; interest costs surged 86.10% YoY in Q3 to ₹9.77 crore.",
+      "Operating cash flow turned sharply negative (-₹80.52 crore) in FY25, with continued working capital stress flagged through FY26 (debtors turnover ratio fell to a record-low 2.64x in H1).",
+      "Board recommended a final dividend of ₹2 per share, with the Promoter and Promoter Group waiving their right to receive it — a notable signal amid the ongoing corporate restructuring."
+    ],
+    "outlook": "Major corporate development: the board approved a three-way demerger of the business following a Family Settlement Agreement (FSA) among the Todi family branches, intended to give different family members clear control over separate entities and improve operational focus/efficiency. Minority shareholders will receive one share in each of the new entities for every Lux Industries share held. As an initial step, Lux Industries incorporated a wholly owned subsidiary, \"Lux and Cozi Limited,\" in West Bengal (May 22, 2026) to house the proposed demerger of \"Vertical A\" — its board includes promoter Ashok Kumar Todi and Executive Director Saket Todi. Independent analysts have flagged execution risk and valuation uncertainty stemming from this complex family-led split, alongside concern that the current premium valuation (P/E ~45–49x) versus peer Dollar Industries (P/E ~13–25x) is hard to justify given the deteriorating margin and return-ratio trajectory.",
+    "risks": [
+      "Independent analysts have flagged execution risk and valuation uncertainty stemming from this complex family-led split, alongside concern that the current premium valuation (P/E ~45–49x) versus peer Dollar Industries (P/E ~13–25x) is hard to justify given the deteriorating margin and return-ratio trajectory."
+    ]
+  },
+  "MOLDTKPAC": {
+    "fiscal_year": "FY26",
+    "revenue": "₹886.61 crore, up 13.48% YoY from ₹781.32 crore.",
+    "revenue_str": "₹886.61 crore, up 13.48% YoY from ₹781.32 crore.",
+    "revenue_growth": "13.48%",
+    "ebitda_margin": "20.59%",
+    "ebitda_str": "₹173.48–173.5 crore, up 20.59% YoY",
+    "ebitda_growth": "20.59%",
+    "pat": "₹72.87 crore, up 20.35% YoY from ₹60.56 crore",
+    "pat_str": "₹72.87 crore, up 20.35% YoY from ₹60.56 crore",
+    "pat_growth": "20.35%",
+    "roce": "Not explicitly disclosed in available sources.",
+    "roce_str": "Not explicitly disclosed in available sources.",
+    "roce_badge": "Sustained",
+    "debt_equity": "N/A",
+    "highlights": [
+      "Sales volumes grew 11.39% YoY to 42,628–42,629 MT from 38,264 MT in FY25.",
+      "Pharma Packs delivered exceptional volume growth of 208.96–220% in FY26, reaching turnover of ₹35 crore — one of the company's fastest-growing segments; FMCG packs grew 18.04%, Q-Packs 25.82%, paint packs 14.41%.",
+      "Q4 FY26 alone delivered EBITDA growth of 22.6% YoY to ₹47.92 crore and PAT up 26.9–27% YoY to ₹20.64 crore, though a 32% YoY jump in quarterly employee costs was flagged by independent analysis as a risk to sustained margin conversion."
+    ],
+    "outlook": "Consolidation of 5 Hyderabad manufacturing units into 2 is expected to deliver full efficiency benefits from FY27 onward, per management commentary. The company is pursuing a strategic MoU with Vibe Generation Holdings (UK) for IP-led, high-precision safety closures, targeting a USD 1 billion global market opportunity with revenue potential of USD 25-30 million (₹250 crore) over five years. Board recommended a final dividend of ₹2.70 per share (27%), in addition to an interim dividend of ₹2.00 per share (40%) already paid; the company received an income tax demand notice of ₹4.84 crore for AY 2022-23 during the year.",
+    "risks": []
+  },
+  "INOXCVA": {
+    "fiscal_year": "FY26",
+    "revenue": "₹1,632 crore, up 21.2% YoY from ₹1,347 crore — the company's highest-ever annual revenue.",
+    "revenue_str": "₹1,632 crore, up 21.2% YoY from ₹1,347 crore — the company's highest-ever annual revenue.",
+    "revenue_growth": "21.2%",
+    "ebitda_margin": "20.2%",
+    "ebitda_str": "Adjusted EBITDA of ₹388 crore, up 20.2% YoY, at a 20.2% margin.",
+    "ebitda_growth": "20.2%",
+    "pat": "Adjusted PAT of ₹261 crore, up 19.3% YoY.",
+    "pat_str": "Adjusted PAT of ₹261 crore, up 19.3% YoY.",
+    "pat_growth": "19.3%",
+    "roce": "Historically and consistently above 30%, with the company maintaining near-zero debt — among the strongest capital-efficiency profiles in this coverage set.",
+    "roce_str": "Historically and consistently above 30%, with the company maintaining near-zero debt — among the strongest capital-efficiency profiles in this coverage set.",
+    "roce_badge": "Sustained",
+    "debt_equity": "N/A",
+    "highlights": [
+      "Export revenue reached a record ₹971 crore for FY26 (+37.7% YoY), now accounting for ~59% of total revenue — a near-fourfold increase from ₹268 crore in FY22, reflecting a structural shift in the company's revenue mix.",
+      "LNG segment posted its best-ever annual revenue at ₹457 crore, nearly doubling YoY, while transport tank/semi-trailer annual sales crossed 300 units for the first time in company history.",
+      "Q4 FY26 alone delivered record quarterly revenue of ₹475 crore (+24.2% YoY), with a ₹200 crore order from a major US private aerospace company — management noted this was awarded \"based on performance of earlier orders,\" signalling a moving-up-the-value-chain trajectory rather than a one-off win."
+    ],
+    "outlook": "Order backlog stood at ₹1,514 crore at FY26-end (63% export orders), with roughly ₹1,200 crore executable in FY27 — meaning nearly 75% of FY26 revenue is already locked in before any new order is won. Despite 19.3% PAT growth, cash flow from operations actually slipped from ₹122 crore in FY25 to ₹117 crore in FY26, as large turnkey projects bill on milestone-based terms requiring the company to fund work-in-progress — a working capital dynamic independent analysts are watching closely. Secured the first marine LNG fuel tank order from Cochin Shipyard (6 tanks of 800 cubic metres each) for LNG-powered vessels, and beverage keg approvals now span Heineken, AB InBev, and Molson Coors — together representing over 40% of the global beer market.",
+    "risks": []
+  }
+}

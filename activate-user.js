@@ -4,6 +4,7 @@ const supabase = require('./config/supabase');
 async function run() {
   const emails = [
     'test_agent_antigravity@13xinvestments.in',
+    'test_agent_antigravity_2@13xinvestments.in',
     'admin@13xinvestments.in'
   ];
 
